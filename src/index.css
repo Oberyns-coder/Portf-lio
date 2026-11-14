@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Syne', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --bg-base: #272727;
+    --bg-elevated: #1E1E1E;
+    --ink-primary: #202523;
+    --card-info: #F1E3D8;
+    --card-img: #BB5A4B;
+    --card-proj: #DBAB73;
+    --card-edu: #8A9E88;
+    --card-exp: #E0C45B;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-base);
+    color: #F5F2EB;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tech {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Textura diagonal reticulada do Figma (iStock halftone paper overlay) */
+.figma-card-texture {
+  position: relative;
+}
+
+.figma-card-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url('/media/figma/paper-texture.png');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: multiply;
+  opacity: 0.28;
+}
+
+/* Recorte inclinado Mobile idêntico ao Figma (sobe da esquerda para a direita) */
+@media (max-width: 767px) {
+  .mobile-edu-slant {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 0 100%);
+    padding-bottom: 1.45rem;
+  }
+
+  .mobile-exp-slant {
+    clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
+    margin-top: -11px;
+    padding-top: 1.15rem;
+  }
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #272727;
+}
+::-webkit-scrollbar-thumb {
+  background: #444444;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DBAB73;
+}

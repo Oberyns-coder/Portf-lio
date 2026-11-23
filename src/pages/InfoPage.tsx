@@ -27,7 +27,7 @@ export function InfoPage() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-[#272727] pt-[88px] md:pt-[102px] pb-14 px-4 sm:px-6 lg:px-10">
+    <main className="min-h-screen w-full bg-[#272727] pt-[88px] md:pt-[102px] pb-20 px-4 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-[1260px] space-y-6">
         {/* TOPO: Crachá Completo (#F1E3D8) + Contato Rápido (#BB5A4B) */}
         <motion.section
@@ -37,7 +37,7 @@ export function InfoPage() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-6"
         >
           {/* Card Identificação / Bio */}
-          <div className="lg:col-span-8 figma-card-texture rounded-[25px] bg-[#F1E3D8] text-[#202523] p-6 sm:p-8 shadow-xl">
+          <div className="lg:col-span-8 bg-[#F1E3D8] figma-card-texture rounded-[25px] text-[#202523] p-6 sm:p-8 shadow-xl">
             <div className="relative z-10">
               <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-black">
                 <div className="flex items-baseline gap-3 flex-wrap">
@@ -83,7 +83,7 @@ export function InfoPage() {
           </div>
 
           {/* Card Contato Rápido */}
-          <div className="lg:col-span-4 figma-card-texture rounded-[25px] bg-[#BB5A4B] text-[#FFF8F5] p-6 sm:p-7 flex flex-col justify-between shadow-xl">
+          <div className="lg:col-span-4 bg-[#BB5A4B] figma-card-texture rounded-[25px] text-[#FFF8F5] p-6 sm:p-7 flex flex-col justify-between shadow-xl">
             <div className="relative z-10">
               <span className="text-xs font-bold uppercase tracking-wider text-white/85">
                 Redes & Contato
@@ -99,7 +99,7 @@ export function InfoPage() {
                 onClick={handleCopyEmail}
                 className="w-full rounded-xl bg-[#171717] text-white px-4 py-3 text-left flex items-center justify-between hover:bg-black transition-colors cursor-pointer"
               >
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <span className="block text-[10px] font-semibold text-[#E0C45B] uppercase tracking-wider">
                     {copied ? 'E-mail copiado!' : 'E-mail (clique para copiar)'}
                   </span>
@@ -116,9 +116,18 @@ export function InfoPage() {
 
               <div className="grid grid-cols-2 gap-2 pt-1">
                 {[
-                  { label: `Be • ${profile.socials.behanceHandle}`, href: profile.socials.behanceUrl },
-                  { label: `in • ${profile.socials.linkedinHandle}`, href: profile.socials.linkedinUrl },
-                  { label: `WhatsApp • ${profile.contact.phone}`, href: profile.contact.whatsapp },
+                  {
+                    label: `Be • ${profile.socials.behanceHandle}`,
+                    href: profile.socials.behanceUrl,
+                  },
+                  {
+                    label: `in • ${profile.socials.linkedinHandle}`,
+                    href: profile.socials.linkedinUrl,
+                  },
+                  {
+                    label: `WhatsApp • ${profile.contact.phone}`,
+                    href: profile.contact.whatsapp,
+                  },
                   { label: 'Baixar CV (PDF)', href: profile.cvUrl },
                 ].map((social) => (
                   <a
@@ -139,7 +148,7 @@ export function InfoPage() {
 
         {/* BENTO GRID EQUILIBRADO:
             Coluna Esquerda (5 cols): EDUCAÇÃO (#8A9E88) + SKILLS & FERRAMENTAS (#DBAB73) empilhados
-            Coluna Direita (7 cols): EXPERIÊNCIAS (#E0C45B) com histórico completo sem gerar vazio ao lado */}
+            Coluna Direita (7 cols): EXPERIÊNCIAS (#E0C45B) com histórico completo */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* COLUNA ESQUERDA: EDUCAÇÃO + SKILLS & FERRAMENTAS */}
           <div className="lg:col-span-5 flex flex-col gap-6">
@@ -149,7 +158,7 @@ export function InfoPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.06 }}
-              className="figma-card-texture rounded-[25px] bg-[#8A9E88] text-[#202523] p-6 sm:p-7 shadow-xl"
+              className="bg-[#8A9E88] figma-card-texture rounded-[25px] text-[#202523] p-6 sm:p-7 shadow-xl"
             >
               <div className="relative z-10">
                 <div className="flex items-center gap-2.5 pb-3 border-b border-black">
@@ -171,7 +180,9 @@ export function InfoPage() {
                         </span>
                       </div>
                       <div className="p-4">
-                        <h3 className="font-bold text-base sm:text-lg text-[#202523]">{edu.degree}</h3>
+                        <h3 className="font-bold text-base sm:text-lg text-[#202523]">
+                          {edu.degree}
+                        </h3>
                         <p className="text-xs sm:text-sm text-[#202523]/85 mt-1.5 leading-relaxed">
                           {edu.note}
                         </p>
@@ -182,13 +193,13 @@ export function InfoPage() {
               </div>
             </motion.section>
 
-            {/* SKILLS & FERRAMENTAS — Preenche a coluna esquerda equilibrando com Experiências */}
+            {/* SKILLS & FERRAMENTAS */}
             <motion.section
               id="skills"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.12 }}
-              className="flex-1 figma-card-texture rounded-[25px] bg-[#DBAB73] text-[#202523] p-6 sm:p-7 shadow-xl flex flex-col justify-between"
+              className="flex-1 bg-[#DBAB73] figma-card-texture rounded-[25px] text-[#202523] p-6 sm:p-7 shadow-xl flex flex-col justify-between"
             >
               <div className="relative z-10">
                 <div className="flex items-center gap-2.5 pb-3 border-b border-black">
@@ -200,7 +211,7 @@ export function InfoPage() {
 
                 <div className="mt-5 space-y-3.5">
                   {skills.map((group) => (
-                    <div key={group.category} className="border border-black bg-[#C99B64]/85">
+                    <div key={group.category} className="border border-black bg-[#CFA069]/85">
                       <div className="px-3.5 py-1.5 border-b border-black">
                         <h3 className="font-mono-tech font-extrabold text-xs sm:text-sm uppercase tracking-[0.08em] text-black">
                           {group.category}
@@ -211,7 +222,7 @@ export function InfoPage() {
                         {group.items.map((skill) => (
                           <span
                             key={skill}
-                            className="text-xs font-semibold px-2.5 py-1 rounded-md bg-[#171717] text-[#F1E3D8]"
+                            className="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-md bg-[#171717] text-[#F1E3D8]"
                           >
                             {skill}
                           </span>
@@ -230,7 +241,7 @@ export function InfoPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.09 }}
-            className="lg:col-span-7 figma-card-texture rounded-[25px] bg-[#E0C45B] text-[#202523] p-6 sm:p-8 shadow-xl flex flex-col justify-between"
+            className="lg:col-span-7 bg-[#E0C45B] figma-card-texture rounded-[25px] text-[#202523] p-6 sm:p-8 shadow-xl flex flex-col justify-between"
           >
             <div className="relative z-10">
               <div className="flex items-center gap-2.5 pb-3 border-b border-black">
@@ -254,8 +265,8 @@ export function InfoPage() {
                     <div className="p-3.5">
                       <p className="font-bold text-sm sm:text-base text-[#202523]">{exp.role}</p>
                       <ul className="mt-2 space-y-1.5 text-xs sm:text-sm text-[#202523]/90 leading-relaxed list-disc pl-4">
-                        {exp.highlights.map((bullet) => (
-                          <li key={bullet}>{bullet}</li>
+                        {exp.highlights.map((bullet, bIdx) => (
+                          <li key={`${exp.id}-b-${bIdx}`}>{bullet}</li>
                         ))}
                       </ul>
                     </div>

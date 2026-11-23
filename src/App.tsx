@@ -24,6 +24,14 @@ function ScrollManager() {
 }
 
 export function App() {
+  useEffect(() => {
+    try {
+      localStorage.removeItem('bruno_portfolio_studio_draft_v1');
+    } catch {
+      // ignore
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="grain-overlay" aria-hidden="true" />

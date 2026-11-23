@@ -22,7 +22,13 @@ function LinkedInBadge({ className = 'w-8 h-8' }: { className?: string }) {
   );
 }
 
-function ProjectsArrowBox({ className = 'w-20 h-20' }: { className?: string }) {
+function ProjectsArrowBox({
+  className = 'w-20 h-20',
+  arrowColor = '#DBAB73',
+}: {
+  className?: string;
+  arrowColor?: string;
+}) {
   return (
     <svg
       viewBox="0 0 109 107"
@@ -34,7 +40,7 @@ function ProjectsArrowBox({ className = 'w-20 h-20' }: { className?: string }) {
       <rect width="108.029" height="107" rx="20.5769" fill="#171717" />
       <path
         d="M25.1904 74.4252C23.2396 76.3796 23.2425 79.5454 25.197 81.4962C27.1514 83.447 30.3173 83.444 32.2681 81.4896L28.7292 77.9574L25.1904 74.4252ZM78.2929 28.3007L74.754 24.7685L25.1904 74.4252L28.7292 77.9574L32.2681 81.4896L81.8317 31.8329L78.2929 28.3007ZM83.2929 28.296C83.2903 25.5346 81.0496 23.2981 78.2882 23.3007L33.2882 23.3429C30.5268 23.3455 28.2903 25.5861 28.2929 28.3476C28.2955 31.109 30.5362 33.3455 33.2976 33.3429L73.2976 33.3054L73.3351 73.3053C73.3377 76.0668 75.5783 78.3032 78.3397 78.3007C81.1012 78.2981 83.3376 76.0574 83.3351 73.296L83.2929 28.296Z"
-        fill="#DBAB73"
+        fill={arrowColor}
       />
     </svg>
   );
@@ -62,7 +68,7 @@ export function HomePage() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') navigate('/informacoes');
               }}
-              className="col-span-7 figma-card-texture rounded-[12px] bg-[#F1E3D8] text-[#202523] p-2.5 flex flex-col justify-between cursor-pointer active:scale-[0.99] transition-transform relative z-10"
+              className="col-span-7 bg-[#F1E3D8] figma-card-texture rounded-[12px] text-[#202523] p-2.5 flex flex-col justify-between cursor-pointer active:scale-[0.99] transition-transform relative z-10"
             >
               <div className="relative z-10">
                 <h1 className="font-display font-extrabold text-[22px] leading-none uppercase tracking-tight text-[#202523]">
@@ -128,9 +134,8 @@ export function HomePage() {
             <Link
               to="/informacoes"
               aria-label="Sobre Bruno Viana"
-              className="col-span-5 relative rounded-[12px] bg-[#BB5A4B] min-h-[144px] figma-card-texture overflow-visible group"
+              className="col-span-5 relative rounded-[12px] min-h-[144px] bg-[#BB5A4B] figma-card-texture overflow-visible group"
             >
-              {/* Camada com recorte apenas na base arredondada, deixando o topo/esquerda livres */}
               <div className="absolute -top-8 -left-3 -right-1 bottom-0 rounded-b-[12px] overflow-hidden z-20 pointer-events-none flex items-end justify-center">
                 <img
                   src={profile.mobileIllustration}
@@ -144,7 +149,7 @@ export function HomePage() {
           {/* LINHA 2: Card PROJETOS Mobile (#DBAB73) */}
           <Link
             to="/projetos"
-            className="shrink-0 figma-card-texture rounded-[12px] bg-[#DBAB73] text-[#202523] p-3 block active:scale-[0.99] transition-transform"
+            className="shrink-0 bg-[#DBAB73] figma-card-texture rounded-[12px] text-[#202523] p-3 block active:scale-[0.99] transition-transform"
           >
             <div className="relative z-10">
               <div className="flex items-start justify-between gap-2">
@@ -157,12 +162,12 @@ export function HomePage() {
                   </p>
                 </div>
 
-                <ProjectsArrowBox className="w-[52px] h-[52px] shrink-0" />
+                <ProjectsArrowBox className="w-[52px] h-[52px] shrink-0" arrowColor="#DBAB73" />
               </div>
 
               <div className="my-2 border-t border-black" />
 
-              {/* 6 Miniaturas sobrepostas de projetos (estilo Figma) */}
+              {/* 6 Miniaturas sobrepostas de projetos */}
               <div className="flex items-center -space-x-1.5">
                 {projects.slice(0, 6).map((proj) => (
                   <div
@@ -182,10 +187,10 @@ export function HomePage() {
 
           {/* LINHA 3: EDUCAÇÃO (#8A9E88) + EXPERIÊNCIAS (#E0C45B) com recorte diagonal do Figma */}
           <div className="flex-1 min-h-0 flex flex-col">
-            {/* EDUCAÇÃO MOBILE (Verde #8A9E88 no topo) */}
+            {/* EDUCAÇÃO MOBILE */}
             <Link
               to="/informacoes#educacao"
-              className="flex-1 min-h-0 mobile-edu-slant figma-card-texture rounded-t-[12px] rounded-b-[10px] bg-[#8A9E88] text-[#202523] px-3 pt-2.5 flex flex-col justify-between overflow-hidden"
+              className="flex-1 min-h-0 mobile-edu-slant bg-[#8A9E88] figma-card-texture rounded-t-[12px] rounded-b-[10px] text-[#202523] px-3 pt-2.5 flex flex-col justify-between overflow-hidden"
             >
               <div className="relative z-10 shrink-0">
                 <h2 className="font-display font-extrabold text-[15px] uppercase leading-none text-[#202523]">
@@ -218,10 +223,10 @@ export function HomePage() {
               </div>
             </Link>
 
-            {/* EXPERIÊNCIAS MOBILE (Amarelo #E0C45B na base, título à direita sob a diagonal) */}
+            {/* EXPERIÊNCIAS MOBILE */}
             <Link
               to="/informacoes#experiencia"
-              className="flex-[1.15] min-h-0 mobile-exp-slant figma-card-texture rounded-b-[12px] rounded-t-[10px] bg-[#E0C45B] text-[#202523] px-3 pb-2 flex flex-col justify-between overflow-hidden"
+              className="flex-[1.15] min-h-0 mobile-exp-slant bg-[#E0C45B] figma-card-texture rounded-b-[12px] rounded-t-[10px] text-[#202523] px-3 pb-2 flex flex-col justify-between overflow-hidden"
             >
               <div className="relative z-10 flex flex-col items-end shrink-0">
                 <h2 className="font-display font-extrabold text-[15px] uppercase leading-none text-[#202523]">
@@ -277,7 +282,7 @@ export function HomePage() {
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') navigate('/informacoes');
                 }}
-                className="group figma-card-texture rounded-[25px] bg-[#F1E3D8] text-[#202523] px-5 pt-4 pb-3 lg:px-6 lg:pt-5 lg:pb-3.5 cursor-pointer transition-transform duration-300 hover:-translate-y-0.5"
+                className="group bg-[#F1E3D8] figma-card-texture rounded-[25px] text-[#202523] px-5 pt-4 pb-3 lg:px-6 lg:pt-5 lg:pb-3.5 cursor-pointer transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <div className="relative z-10">
                   {/* BRUNO VIANA */}
@@ -366,7 +371,6 @@ export function HomePage() {
                 aria-label="Ver informações completas de Bruno Viana"
                 className="group block relative w-full h-full min-h-0 rounded-[25px] bg-[#BB5A4B] figma-card-texture overflow-visible"
               >
-                {/* Wrapper que recorta perfeitamente a base e lateral direita em 25px, mas permite o cabelo sair 38px acima do topo! */}
                 <div className="absolute -top-[36px] inset-x-0 bottom-0 rounded-b-[25px] overflow-hidden z-20 pointer-events-none">
                   <img
                     src={profile.desktopIllustration}
@@ -389,7 +393,7 @@ export function HomePage() {
             >
               <Link
                 to="/projetos"
-                className="group w-full h-full min-h-0 figma-card-texture rounded-[25px] bg-[#DBAB73] text-[#202523] px-6 py-5 lg:px-8 lg:py-6 flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
+                className="group w-full h-full min-h-0 bg-[#DBAB73] figma-card-texture rounded-[25px] text-[#202523] px-6 py-5 lg:px-8 lg:py-6 flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <div className="relative z-10 flex items-start justify-between gap-6">
                   <div className="min-w-0">
@@ -402,14 +406,17 @@ export function HomePage() {
                   </div>
 
                   <div className="shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <ProjectsArrowBox className="w-[74px] h-[74px] lg:w-[98px] lg:h-[96px]" />
+                    <ProjectsArrowBox
+                      className="w-[74px] h-[74px] lg:w-[98px] lg:h-[96px]"
+                      arrowColor="#DBAB73"
+                    />
                   </div>
                 </div>
 
                 <div className="relative z-10 mt-auto pt-3">
                   <div className="border-t border-black mb-3 lg:mb-4" />
 
-                  {/* Fileira de 6 miniaturas quadradas sobrepostas (fiel ao Figma) */}
+                  {/* Fileira de 6 miniaturas quadradas sobrepostas */}
                   <div className="flex items-center -space-x-2">
                     {projects.slice(0, 6).map((proj) => (
                       <div
@@ -440,7 +447,7 @@ export function HomePage() {
               >
                 <Link
                   to="/informacoes#educacao"
-                  className="group w-full h-full min-h-0 figma-card-texture rounded-[25px] bg-[#8A9E88] text-[#202523] flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
+                  className="group w-full h-full min-h-0 bg-[#8A9E88] figma-card-texture rounded-[25px] text-[#202523] flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   <div className="relative z-10 px-5 pt-5 lg:px-6 lg:pt-6 shrink-0">
                     <h2 className="font-display font-extrabold text-[clamp(1.25rem,2.7vh,1.62rem)] uppercase leading-tight text-[#202523]">
@@ -453,7 +460,7 @@ export function HomePage() {
                     {education.map((edu) => (
                       <div
                         key={edu.id}
-                        className="border border-black bg-[#839482]/85 transition-colors group-hover:bg-[#839482]"
+                        className="border border-black bg-[#839482]/90 transition-colors group-hover:bg-[#7A8C79]"
                       >
                         <div className="px-3 py-1.5 border-b border-black flex items-end justify-between gap-2">
                           <span className="font-mono-tech font-extrabold text-[11px] lg:text-[13.5px] leading-[1.08] tracking-[0.09em] text-black">
@@ -496,7 +503,7 @@ export function HomePage() {
               >
                 <Link
                   to="/informacoes#experiencia"
-                  className="group w-full h-full min-h-0 figma-card-texture rounded-[25px] bg-[#E0C45B] text-[#202523] flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
+                  className="group w-full h-full min-h-0 bg-[#E0C45B] figma-card-texture rounded-[25px] text-[#202523] flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   <div className="relative z-10 px-5 pt-5 lg:px-6 lg:pt-6 shrink-0">
                     <h2 className="font-display font-extrabold text-[clamp(1.25rem,2.7vh,1.62rem)] uppercase leading-tight text-[#202523]">
@@ -509,7 +516,7 @@ export function HomePage() {
                     {experiences.slice(0, 3).map((exp) => (
                       <div
                         key={exp.id}
-                        className="border border-black bg-[#C5AC4F]/85 transition-colors group-hover:bg-[#C5AC4F]"
+                        className="border border-black bg-[#C5AC4F]/90 transition-colors group-hover:bg-[#BCA247]"
                       >
                         <div className="px-3 py-1 border-b border-black flex items-center justify-between gap-2">
                           <span className="font-mono-tech font-extrabold text-[11px] lg:text-[13.5px] leading-none tracking-[0.1em] text-black truncate">
